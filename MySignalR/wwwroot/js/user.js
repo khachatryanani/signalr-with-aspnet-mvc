@@ -1,4 +1,5 @@
 ﻿var connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.Information)
     .withUrl("/hubs/user").build();
 
 connection.on("UpdateTotalViews", (value) =>
