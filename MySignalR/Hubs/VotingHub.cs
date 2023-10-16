@@ -4,7 +4,7 @@ namespace MySignalR.Hubs
 {
     public class VotingHub: Hub
     {
-        public Dictionary<string, int> GetVotingResults() 
+        public async Task<Dictionary<string, int>> GetVotingResults() 
         {
             return SData.Voting;
         }
