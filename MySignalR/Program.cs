@@ -46,6 +46,8 @@ app.MapHub<UserHub>("/hubs/user");
 app.MapHub<VotingHub>("/hubs/voting");
 app.MapHub<HouseHub>("/hubs/house");
 app.MapHub<NotificationHub>("/hubs/notification");
+app.MapHub<ChatHub>("/hubs/chat");
+
 
 
 app.Run();
