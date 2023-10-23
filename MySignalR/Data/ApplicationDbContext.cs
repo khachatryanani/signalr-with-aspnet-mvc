@@ -12,5 +12,6 @@ namespace MySignalR.Data
         }
 
         public DbSet<Order> Orders { get; set; }
+        public DbSet<ChatRoom> Rooms { get; set; }
     }
 }

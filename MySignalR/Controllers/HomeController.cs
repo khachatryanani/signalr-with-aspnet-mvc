@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using MySignalR.Data;
 using MySignalR.Hubs;
 using MySignalR.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace MySignalR.Controllers
 {
@@ -24,6 +26,21 @@ namespace MySignalR.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Authorize]
+        public IActionResult AdvancedChat()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            ChatViewModel vm = new ChatViewModel()
+            {
+                MaxRooms = 4,
+                UserId = userId,
+                Rooms = _context.Rooms.ToList()
+            };
+
+            return View(vm);
         }
 
         public IActionResult DeathlyHallows(string type) 
